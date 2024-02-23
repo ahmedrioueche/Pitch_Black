@@ -8,6 +8,8 @@
 :root {
   --primaryColor: #1a1a1a;
   --secondaryColor: #195b56;
+  --CoPrimaryColor: #141313; 
+  --HighlightColor : #555;
 }
 
 body {
@@ -22,11 +24,14 @@ nav.navbar {
   top: 0;
   z-index: 9999;
   transition: 0.32s ease-in-out;
+  background-color: var(--CoPrimaryColor);
+  height: 110px;
 }
 
 nav.navbar.scrolled {
   padding: 0;
-  background-color: #121212;
+  background-color: var(--CoPrimaryColor);
+
 }
 
 nav.navbar a.navbar-brand {
@@ -52,10 +57,11 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
   color: #fff !important;
   letter-spacing: 0.8px;
-  padding: 0 25px;
+  padding: 10px 25px;
   font-size: 18px;
   opacity: 0.75;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
@@ -73,12 +79,18 @@ span.navbar-text {
   font-weight: 700;
   color: #fff;
   border: 1px solid #fff;
-  padding: 18px 34px;
+  padding: 10px 20px;
   font-size: 18px;
   margin-left: 18px;
+  margin-top: 20px;
   position: relative;
   background-color: transparent;
   transition: 0.3s ease-in-out;
+}
+
+.navbar-text.studio{
+
+  margin-left: 50px;
 }
 
 .navbar-text button span {
@@ -96,7 +108,6 @@ span.navbar-text {
   z-index: -1;
   transition: 0.3s ease-in-out;
   border-radius: inherit;
-  background-color: var(--secondaryColor); /* Change the background color on hover to secondary color */
 
 }
 
@@ -105,15 +116,22 @@ span.navbar-text {
   background-color: white;
 }
 
+.navbar-text button:active {
+  color: var(--primaryColor);
+  background-color: var(--secondaryColor) !important;
+  border: 1px solid var(--secondaryColor) !important;
+}
+
 .navbar-text button:hover::before {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
+  background-color: var(--secondaryColor) !important;; 
 }
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
   opacity: 1;
-  background-color: var(--secondaryColor); /* Change the active color to secondary color */
+  background-color: var(--secondaryColor) !important;; 
 }
 nav.navbar .navbar-toggler:active,
 nav.navbar .navbar-toggler:focus {
@@ -173,4 +191,55 @@ nav.navbar .navbar-brand {
   color: white;
   font-size: 30px;
   cursor: pointer;
+}
+/* LeftBar.css */
+
+.leftBar {
+  width: 240px;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #141313;
+  color: #fff;
+  padding-top: 20px;
+  z-index: 0;
+}
+
+.leftBar .container {
+  margin-top: 50%;
+  padding: 0 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.user,
+.item,
+.active {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.item:hover {
+  background-color: var(--HighlightColor);
+}
+
+.user.active,
+.item.active,
+.active {
+  background-color: var(--SecondaryColor); /* Change to your secondary color */
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+span {
+  font-size: 18px;
 }
