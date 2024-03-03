@@ -57,6 +57,11 @@ body {
   display: none;
 }
 
+.leftIcon:hover{
+  transform: scale(1.2); 
+  filter: brightness(1.2);
+  transition: 0.8 ease-out;
+}
 .navsearch {
   display: flex;
   flex-direction: row;
@@ -122,6 +127,11 @@ body {
   cursor: pointer;
 }
 
+.rightIcon.drop {
+  margin-bottom: 0;
+}
+
+
 .navright .rightIcon:hover {
   transform: scale(1.2); 
   filter: brightness(1.2);
@@ -145,7 +155,6 @@ body {
 .navright .collapseIcon {
   display: flex;
   cursor: pointer;
-  margin-right: 10px;
   width: 2.2rem;
   height: 2.2rem;
 }
@@ -166,9 +175,13 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 15px;
   margin-right: 1%;
+  cursor: pointer;
 }
 
 .menuItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -187,8 +200,8 @@ body {
 }
 
 .profileImage {
-  width: 30px; /* Adjust the size as needed */
-  height: 30px; /* Adjust the size as needed */
+  width: 30px; 
+  height: 30px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -267,17 +280,17 @@ span {
 }
 
 
-@media (min-width: 700px) and (max-width: 920px) {
+@media (max-width: 920px) {
   .navright {
     margin-right: 10%;
   }
 
   .navsearch {
-    width: auto;
+    width: 50%;
   }
 
   .navsearch .btn {
-    width: 30%;
+    width: 35%;
   }
 
   .navright .searchIcon {
@@ -290,12 +303,16 @@ span {
 
 }
 
-@media (max-width: 640px) {
+@media (max-width: 500px) {
  
-  .navleft span {
-    font-size: 1.6rem;
-  }
   .leftBar {
     display: none;
+  }
+  .navsearch {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .navsearch .btn {
+    width: 30%;
   }
 }
