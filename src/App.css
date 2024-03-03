@@ -17,187 +17,209 @@ body {
 }
 
 /************ Navbar Css ************/
-nav.navbar {
+.navbar {
   padding: 18px 0;
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 9999;
+  z-index: 999999;
   transition: 0.32s ease-in-out;
   background-color: var(--CoPrimaryColor);
+  text-decoration: none;
+  color: white;
   height: 110px;
 }
 
-nav.navbar.scrolled {
+.navleft {
   padding: 0;
-  background-color: var(--CoPrimaryColor);
-
+  margin: 0;
+}
+.navleft a {
+  text-decoration: none;
+  text-decoration-line: none;
+  z-index: 99999;
 }
 
-nav.navbar a.navbar-brand {
-  width: 9%;
+.navleft span {
+  z-index: 99999;
   color: white;
-  font-size: 35px;
-  font-weight: bolder;
-  margin-right: 100px;
+  font-size: 1.7rem;
+  padding: 20px;
+  
 }
 
-nav.navbar .navbar-collapse {
-  display: flex;
-  justify-content: center; /* Center the items horizontally */
-  align-items: center; /* Center the items vertically */
-}
-
-nav.navbar .navbar-nav {
-  text-align: center;
-  margin: 0 auto; /* Center the nav items when using flex */
-}
-
-nav.navbar .navbar-nav .nav-link.navbar-link {
-  font-weight: 400;
-  color: #fff !important;
-  letter-spacing: 0.8px;
-  padding: 10px 25px;
-  font-size: 18px;
-  opacity: 0.75;
+.leftIcon {
+  margin-left: 0;
+  min-height: 2.2rem;
+  min-width: 2.2rem;
+  margin-bottom: 12px;
   cursor: pointer;
-  border-radius: 8px;
+  display: none;
 }
 
-nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
-nav.navbar .navbar-nav a.nav-link.navbar-link.active {
-  opacity: 1;
-  color: var(--secondaryColor); /* Change the active color to secondary color */
+.navsearch {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-top: 5px;
 }
 
-span.navbar-text {
+.navsearch form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navsearch .searchIcon {
+  display: flex;
+  position: absolute;
+  left: 0;
+  color: black;
+  padding: 0 10px;
+}
+
+.navsearch form input {
+  width: 60%;
+  height: 50px;
+}
+
+.btn {
+  width: 20%;
+  height: 55px;
+  border: none;
+  margin-left: -5px;
+  background-color: var(--primaryColor);
+  color: white;
+  transition: 0.3s ease-in;
+}
+
+.btn:hover {
+  background-color: var(--secondaryColor);
+}
+
+.btn:active {
+  background-color: var(--secondaryColor);
+}
+
+.navright {
+  margin-right: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+.navright .rightIcon {
+  margin-right: 10%;
+  height: 2.2rem;
+  width: 2.2rem;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.navright .rightIcon:hover {
+  transform: scale(1.2); 
+  filter: brightness(1.2);
+  transition: 0.8 ease-out;
+}
+
+.navright .user img {
+  margin-right: 20px ;
+  height: 2.3rem;
+  width: 2.3rem;
+  border-radius: 20px;
+}
+.navright .collapseIcon {
+  display: none;
+}
+
+.navright .searchIcon {
+  display: none;
+}
+ 
+.navright .collapseIcon {
+  display: flex;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.navright .collapseIcon:hover {
+  transform: scale(1.2); 
+  filter: brightness(1.2);
+  transition: 0.8 ease-out;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--CoPrimaryColor);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-right: 1%;
+}
+
+.menuItem {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.menuItem:hover {
+  background-color: var(--secondaryColor);
+}
+
+.userInfo {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
-.navbar-text button {
-  font-weight: 700;
-  color: #fff;
-  border: 1px solid #fff;
-  padding: 10px 20px;
-  font-size: 18px;
-  margin-left: 18px;
-  margin-top: 20px;
-  position: relative;
-  background-color: transparent;
-  transition: 0.3s ease-in-out;
+.profileImage {
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+  border-radius: 50%;
+  margin-right: 10px;
 }
 
-.navbar-text.studio{
-
-  margin-left: 50px;
+.profileInfo {
+  display: flex;
+  flex-direction: column;
 }
 
-.navbar-text button span {
-  z-index: 1;
+.userInfo:hover {
+  background-color: var(--secondaryColor);
 }
 
-.navbar-text button::before {
-  content: "";
-  width: 0%;
-  height: 100%;
-  position: absolute;
-  background-color: #fff;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  transition: 0.3s ease-in-out;
-  border-radius: inherit;
-
+.profileName {
+  font-weight: bold;
 }
 
-.navbar-text button:hover {
-  color: #121212;
-  background-color: white;
-}
-
-.navbar-text button:active {
-  color: var(--primaryColor);
-  background-color: var(--secondaryColor) !important;
-  border: 1px solid var(--secondaryColor) !important;
-}
-
-.navbar-text button:hover::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background-color: var(--secondaryColor) !important;; 
-}
-nav.navbar .navbar-nav a.nav-link.navbar-link.active {
-  opacity: 1;
-  background-color: var(--secondaryColor) !important;; 
-}
-nav.navbar .navbar-toggler:active,
-nav.navbar .navbar-toggler:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-nav.navbar .navbar-toggler-icon {
-  width: 24px;
-  height: 17px;
-  background-image: none;
-  position: relative;
-  border-bottom: 2px solid #fff;
-  transition: all 300ms linear;
-  top: -2px;
-}
-
-nav.navbar .navbar-toggler-icon:focus {
-  border-bottom: 2px solid #fff;
-}
-
-nav.navbar .navbar-toggler-icon:after,
-nav.navbar .navbar-toggler-icon:before {
-  width: 24px;
-  position: absolute;
-  height: 2px;
-  background-color: #fff;
-  top: 0;
-  left: 0;
-  content: '';
-  z-index: 2;
-  transition: all 300ms linear;
-}
-
-nav.navbar .navbar-toggler-icon:after {
-  top: 8px;
-}
-
-nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:after {
-  transform: rotate(45deg);
-  background-color: #fff;
-  height: 2px;
-}
-
-nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
-  transform: translateY(8px) rotate(-45deg);
-  background-color: #fff;
-  height: 2px;
-}
-
-nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon { 
-  border-color: transparent;
-}
-
-nav.navbar .navbar-brand {
-  font-weight: bolder;
+.profileEmail {
   color: white;
-  font-size: 30px;
-  cursor: pointer;
 }
-/* LeftBar.css */
 
+.separatorLine {
+  height: 1px;
+  background-color: #ccc;
+  margin: 8px 0; /* Adjust the margin as needed */
+}
+
+/* LeftBar.css */
 .leftBar {
   width: 240px;
   height: 100%;
-  min-height: 100vh;
   background-color: #141313;
   color: #fff;
   padding-top: 20px;
@@ -226,7 +248,7 @@ nav.navbar .navbar-brand {
 }
 
 .item:hover {
-  background-color: var(--HighlightColor);
+  background-color: var(--secondaryColor);
 }
 
 .user.active,
@@ -242,4 +264,38 @@ nav.navbar .navbar-brand {
 
 span {
   font-size: 18px;
+}
+
+
+@media (min-width: 700px) and (max-width: 920px) {
+  .navright {
+    margin-right: 10%;
+  }
+
+  .navsearch {
+    width: auto;
+  }
+
+  .navsearch .btn {
+    width: 30%;
+  }
+
+  .navright .searchIcon {
+    display: flex;
+  }
+
+  .leftBar {
+    display: none;
+  }
+
+}
+
+@media (max-width: 640px) {
+ 
+  .navleft span {
+    font-size: 1.6rem;
+  }
+  .leftBar {
+    display: none;
+  }
 }
