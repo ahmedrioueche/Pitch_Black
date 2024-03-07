@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState, useRef } from 'react';
+import CloseDropDown from '../modules/CloseDropDown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -16,18 +17,27 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp';
-
-
+import UserDropDown from './UserDropDown';
+import Messages from './MessagesDropDown';
+import MessagesDropDown from './MessagesDropDown';
+import NotificationsDropDown from './NotifsDropDown'
 function MyNavBar() {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isSearchBarVisible, setIsSearchBarVisible] = useState(true);
   const [isSearchBarToggled, setIsSearchBarToggled] = useState(false);
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [isUserDropdownVisible, setIsUserDropdownVisible] = useState(false);
-  const dropdownRef = useRef(null);
+  const [isDropdownVisible, setIsDropDownVisible] = useState(false);
+  const [isUserDropdownVisible, setIsUserDropDownVisible] = useState(false);
+  const [isMessagesDropDownVisible, setIsMessagesDropDownVisible] = useState(false);
+  const [isNotifsDropDownVisibles, setIsNotifsDropDownVisibles] = useState(false);
 
+  const dropdownRef = useRef(null);
+  const userDropdownRef = useRef(null);
+  const messagesDropDownRef = useRef(null);
+  const notifsDropDownRef = useRef(null);
+
+  
   //----------------------------search bar------------------------------------//
 
   const toggleSearchBar = () => {
@@ -59,6 +69,10 @@ function MyNavBar() {
     else if(screenWidth > 920){
       setIsSearchBarVisible(true);
       setIsSearchBarToggled(false);
+      setIsUserDropDownVisible(false);
+      setIsDropDownVisible(false);
+      setIsMessagesDropDownVisible(false);
+      setIsNotifsDropDownVisibles(false);
     }
 
   }, [window.innerWidth])
@@ -67,19 +81,53 @@ function MyNavBar() {
   //--------------------------DropDown------------------------------------//
 
   const toggleUserDropdown = () => {
-    setIsUserDropdownVisible(!isUserDropdownVisible);
-  };
+    setIsUserDropDownVisible(!isUserDropdownVisible);
+    setIsDropDownVisible(false);
+    setIsNotifsDropDownVisibles(false);
+    setIsMessagesDropDownVisible(false);
 
-  const closeDropdown = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      setIsDropdownVisible(false);
-    }
   };
 
   const toggleDropdown = () => {
-    setIsDropdownVisible(!isDropdownVisible);
+    setIsDropDownVisible(!isDropdownVisible);
+    setIsUserDropDownVisible(false);
+    setIsNotifsDropDownVisibles(false);
+    setIsMessagesDropDownVisible(false);
+
   };
 
+  const toggleMessagesDropDown = () => {
+    setIsMessagesDropDownVisible(!isMessagesDropDownVisible);
+    setIsNotifsDropDownVisibles(false);
+    setIsDropDownVisible(false);
+    setIsUserDropDownVisible(false);
+    console.log("messages")
+  }
+
+  const toggleNotifsDropDown = () => {
+    setIsNotifsDropDownVisibles(!isNotifsDropDownVisibles)
+    setIsMessagesDropDownVisible(false);
+    setIsDropDownVisible(false);
+    setIsUserDropDownVisible(false);
+    console.log("notifs")
+
+  }
+
+  
+  const closeDropdown = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setIsDropDownVisible(false);
+    }
+    if (userDropdownRef.current && !userDropdownRef.current.contains(e.target)) {
+      setIsUserDropDownVisible(false);
+    }
+    if (messagesDropDownRef.current && !messagesDropDownRef.current.contains(e.target)) {
+      setIsMessagesDropDownVisible(false);
+    }
+    if (notifsDropDownRef.current && !notifsDropDownRef.current.contains(e.target)) {
+      setIsNotifsDropDownVisibles(false);
+    }
+  };
   
   useEffect(() => {
     document.addEventListener('click', closeDropdown);
@@ -150,86 +198,82 @@ function MyNavBar() {
         )}
         
         <div className='navright'>
-          {(!isSearchBarToggled && window.innerWidth >= 650) ? (
+        {(!isSearchBarToggled && window.innerWidth >= 650) ? (
+          <>
+            <SearchIcon className='rightIcon searchIcon' onClick={toggleSearchBar} />
+            <PlayCircleIcon className='rightIcon' />
+            <AddCircleOutlineSharpIcon className='rightIcon' />
+            <CircleNotificationsIcon className="rightIcon" ref={notifsDropDownRef} onClick={toggleNotifsDropDown} />
+               {isNotifsDropDownVisibles && (
+                <NotificationsDropDown/>
+               )}
+            <MessageIcon className="rightIcon" ref={messagesDropDownRef} onClick={toggleMessagesDropDown}/>
+               {isMessagesDropDownVisible && (
+                <MessagesDropDown/>
+               )}
+    
+            <div className='user' onClick={toggleUserDropdown} ref={userDropdownRef}>
+              <img src='src/assets/userImg.webp' />
+              {isUserDropdownVisible && ( 
+               <UserDropDown/>
+              )}
+            </div>
+          </>
+        ) : (
+          (!isSearchBarVisible && (
             <>
-              <SearchIcon className='rightIcon searchIcon' onClick={toggleSearchBar} />
-              <PlayCircleIcon className='rightIcon' />
-              <AddCircleOutlineSharpIcon className='rightIcon' />
-              <CircleNotificationsIcon className="rightIcon" />
-              <MessageIcon className="rightIcon" />
-              <div className='user' onClick={toggleUserDropdown} ref={dropdownRef}>
-                <img src='src/assets/userImg.webp' />
-                {isUserDropdownVisible && (
-                  <div className='dropdownMenu'>
-                    <div className='userInfo'>
-                      <img src='src/assets/userImg.webp' alt="user" className='profileImage' />
-                      <div className='profileInfo'>
-                        <div className='profileName'>John Doe</div>
-                        <div className='profileEmail'>john.doe@example.com</div>
-                      </div>
+              <MoreVertIcon className='collapseIcon' onClick={toggleDropdown} ref={dropdownRef} />
+              {(isDropdownVisible && !isUserDropdownVisible) && (
+                <div className='dropdownMenu'>
+                  <div className='userInfo' onClick={toggleUserDropdown}>
+                    <img src='src/assets/userImg.webp' alt="user" className='profileImage' />
+                    <div className='profileInfo'>
+                      <div className='profileName'>John Doe</div>
+                      <div className='profileEmail'>john.doe@example.com</div>
                     </div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'>Your Profile</div>
-                    <div className='menuItem'>Your Projects</div>
-                    <div className='menuItem'>Your Gallery</div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'>Pitch Studio</div>
-                    <div className='menuItem'>Pitch Stream</div>
-                    <div className='menuItem'>Pitch Library</div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'>Settings</div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'>Log out</div>
                   </div>
-                )}  
-              </div>
-            </>
-          ) : (
-            (!isSearchBarVisible && (
-              <>
-                <MoreVertIcon className='collapseIcon' onClick={toggleDropdown} ref={dropdownRef} />
-                {isDropdownVisible && (
-                  <div className='dropdownMenu'>
-                    <div className='userInfo'>
-                      <img src='src/assets/userImg.webp' alt="user" className='profileImage' />
-                      <div className='profileInfo'>
-                        <div className='profileName'>John Doe</div>
-                        <div className='profileEmail'>john.doe@example.com</div>
-                      </div>
-                    </div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'>
-                        <MessageIcon className="rightIcon drop" />
-                        Messages
-                    </div>
-                    <div className='menuItem'>
-                      <CircleNotificationsIcon className="rightIcon drop" />
-                      Notifications
-                    </div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'>
-                      <AddCircleOutlineSharpIcon className='rightIcon drop' />
-                      Create
-                    </div>
-                    <div className='menuItem'>
+                  <div className='separatorLine'></div>
+                  <div className='menuItem' onClick={toggleMessagesDropDown}>
+                    <MessageIcon className="rightIcon drop" />
+                    Messages
+                  </div>
+                  <div className='menuItem' onClick={toggleNotifsDropDown}>
+                    <CircleNotificationsIcon className="rightIcon drop" />
+                    Notifications
+                  </div>
+                  <div className='separatorLine'></div>
+                  <div className='menuItem'>
+                    <AddCircleOutlineSharpIcon className='rightIcon drop' />
+                    Create
+                  </div>
+                  <div className='menuItem'>
                     <PlayCircleIcon className='rightIcon drop' />
-                      Watch
-                    </div>
-                    <div className='separatorLine'></div>
-                    <div className='menuItem'  onClick={toggleSearchBar} >
-                    <SearchIcon className='rightIcon searchIcon drop'/>
-                      Search</div>
+                    Watch
                   </div>
-                )}
-              </>
-            ))
-          )}
-        </div>
+                  <div className='separatorLine'></div>
+                  <div className='menuItem' onClick={toggleSearchBar}>
+                    <SearchIcon className='rightIcon searchIcon drop' />
+                    Search
+                  </div>
+                </div>
+              )}
+              {isUserDropdownVisible && (
+                  <UserDropDown />
+              )}
+              {isMessagesDropDownVisible && (
+                <MessagesDropDown/>
+              )}
+              
+              {isNotifsDropDownVisibles && (
+                <NotificationsDropDown/>
+               )}
+            </>
+          ))
+        )}
       </div>
+     </div>
     </>
   );
-  
-  
 }
 
 export default MyNavBar;
