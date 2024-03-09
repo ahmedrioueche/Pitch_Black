@@ -109,11 +109,8 @@ function MyNavBar() {
     setIsMessagesDropDownVisible(false);
     setIsDropDownVisible(false);
     setIsUserDropDownVisible(false);
-    console.log("notifs")
-
   }
 
-  
   const closeDropdown = (e) => {
     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setIsDropDownVisible(false);
@@ -201,7 +198,7 @@ function MyNavBar() {
         {(!isSearchBarToggled && window.innerWidth >= 650) ? (
           <>
             <SearchIcon className='rightIcon searchIcon' onClick={toggleSearchBar} />
-            <PlayCircleIcon className='rightIcon' />
+            <PlayCircleIcon className='rightIcon'/>
             <AddCircleOutlineSharpIcon className='rightIcon' />
             <CircleNotificationsIcon className="rightIcon" ref={notifsDropDownRef} onClick={toggleNotifsDropDown} />
                {isNotifsDropDownVisibles && (

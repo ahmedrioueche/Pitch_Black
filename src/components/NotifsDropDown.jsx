@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import CloseDropDown from '../modules/CloseDropDown';
 import SettingsSuggestIcon from '@mui/icons-material/SettingsSuggest';
+
 function NotificationsDropDown() {
 
   const profilePicUrl = 'src/assets/userImg.webp';
   const notifications = [
-    { id: 1, sender: 'Admin', profilePic: 'src/assets/admin.jpg', content: 'New announcement: Important updates!' },
-    { id: 2, sender: 'System', profilePic: 'src/assets/system.png', content: 'Your account has been upgraded.' },
+    { id: 1, sender: 'Doggo', profilePic: 'src/assets/dog.jpg', time: '1 hour ago', content: 'Liked your post' },
+    { id: 2, sender: 'Pussy', profilePic: 'src/assets/cat.webp',  time: '2 hours ago', content: 'Commented on your post' },
   ];
 
   const handleItemClick = (notification) => {
     setIsNotificationsDropDownVisible(false);
   };
-
 
   return (
     <div className='notificationsDropdownMenu' >
@@ -34,7 +34,8 @@ function NotificationsDropDown() {
               <img src={notification.profilePic || profilePicUrl} alt="" className='profileImage' />
               {notification.sender}
             </div>
-            <div className='notificationContent'>{notification.content}</div>
+            <div className='notificationContent'>{notification.sender + " " +  notification.content}</div>
+            <span className='notificationContent time'>{notification.time}</span>
           </div>
         ))}
       </div>

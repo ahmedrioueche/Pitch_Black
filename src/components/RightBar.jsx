@@ -3,26 +3,22 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PeopleIcon from '@mui/icons-material/People';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 
-function LeftBar() {
+function RightBar() {
   return (
-    <div className='leftBar'>
+    <div className='rightBar leftBar'>
       <div className='container'>
         <div className='menu'>
           <div className='menuItem'>
             <AccountCircleIcon className='icon' />
-            <span>UserName</span>
+            <span>Profile</span>
           </div>
           <div className='menuItem'>
             <PeopleIcon className='icon' />
-            <span>Friends</span>
-          </div>
-          <div className='menuItem'>
-            <PeopleIcon className='icon' />
-            <span>Co-creators</span>
+            <span>Community</span>
           </div>
           <div className='menuItem'>
             <VideoLibraryIcon className='icon' />
-            <span>Gallery</span>
+            <span>Library</span>
           </div>
         </div>
       </div>
@@ -30,4 +26,4 @@ function LeftBar() {
   );
 }
 
-export default LeftBar;
+export default RightBar;

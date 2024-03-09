@@ -5,8 +5,8 @@ function MessagesDropDown() {
 
   const profilePicUrl = 'src/assets/userImg.webp';
   const messages = [
-    { id: 1, sender: 'Doggo', profilePic: 'src/assets/dog.jpg',  content: 'Hello there! How are you?' },
-    { id: 2, sender: 'Pussy', profilePic: 'src/assets/cat.webp', content: 'Just wanted to say hi!' },
+    { id: 1, sender: 'Doggo', profilePic: 'src/assets/dog.jpg', time: '1 hour ago',  content: 'Hello there! How are you?' },
+    { id: 2, sender: 'Pussy', profilePic: 'src/assets/cat.webp', time: '2 hours ago', content: 'Just wanted to say hi!' },
   ];
 
   return (
@@ -30,6 +30,7 @@ function MessagesDropDown() {
               {message.sender}
             </div>
             <div className='messageContent'>{message.content}</div>
+            <span className='messageContent time'>{message.time}</span>
           </div>
         ))}
       </div>

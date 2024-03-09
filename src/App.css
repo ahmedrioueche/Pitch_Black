@@ -9,11 +9,11 @@
   --primaryColor: #1a1a1a;
   --secondaryColor: #195b56;
   --CoPrimaryColor: #141313; 
-  --HighlightColor : #555;
+  --HighlightColor : #383737;
 }
 
 body {
-  background-color: var(--primaryColor);
+  background-color: var(--CoPrimaryColor);
 }
 
 /************ Navbar Css ************/
@@ -24,7 +24,7 @@ body {
   top: 0;
   z-index: 999999;
   transition: 0.32s ease-in-out;
-  background-color: var(--CoPrimaryColor);
+  background-color: var(--primaryColor);
   text-decoration: none;
   color: white;
   height: 110px;
@@ -97,7 +97,7 @@ body {
   height: 55px;
   border: none;
   margin-left: -5px;
-  background-color: var(--primaryColor);
+  background-color: var(--HighlightColor);
   color: white;
   transition: 0.3s ease-in;
 }
@@ -131,6 +131,9 @@ body {
   margin-bottom: 0;
 }
 
+.rightIcon:hover {
+  
+}
 
 .navright .rightIcon:hover {
   transform: scale(1.2); 
@@ -251,21 +254,26 @@ body {
   margin: 8px 0; /* Adjust the margin as needed */
 }
 
-
 .messageContent {
   display: flex;
-  
-
 }
+
+.messageContent.time,
+.notificationContent.time  {
+  font-size: 0.8rem;
+  font-weight: lighter;
+}
+
 
 /* LeftBar.css */
 .leftBar {
-  width: 240px;
-  height: 100%;
-  background-color: #141313;
-  color: #fff;
+  width: 280px;
+  min-height: 100vh;
+  background-color: var(--CoPrimaryColor);
+  color: white;
   padding-top: 20px;
   z-index: 0;
+  transition: 0.3s ease-in-out; 
 }
 
 .leftBar .container {
@@ -296,7 +304,7 @@ body {
 .user.active,
 .item.active,
 .active {
-  background-color: var(--SecondaryColor); /* Change to your secondary color */
+  background-color: var(--SecondaryColor); 
 }
 
 .icon {
@@ -308,6 +316,76 @@ span {
   font-size: 18px;
 }
 
+/*-----PostCard------*/
+.post-card {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+  background-color: var(--CoPrimaryColor);
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 600px; 
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-header .username {
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.post-content {
+  margin-bottom: 15px;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+}
+
+.post-actions button {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  background-color: var(--HighlightColor);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.post-actions button:hover {
+  background-color: var(--secondaryColor);
+}
+
+.post-actions button .MuiSvgIcon-root {
+  margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+@media (max-width: 1100px) {
+
+  .leftBar {
+    width: 240px;
+  }
+}
 
 @media (max-width: 920px) {
   .navright {
@@ -332,11 +410,9 @@ span {
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
  
-  .leftBar {
-    display: none;
-  }
+ 
   .navsearch {
     width: 90%;
     margin-left: 5%;
