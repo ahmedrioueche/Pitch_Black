@@ -147,6 +147,7 @@ body {
   width: 2.3rem;
   border-radius: 20px;
 }
+
 .navright .collapseIcon {
   display: none;
 }
@@ -184,11 +185,16 @@ body {
   cursor: pointer;
 }
 
-.dropDownTitle {
+.dropDownTitle,
+.sectionTitle {
   display: flex;
   justify-content: center;
   font-size: 1.1rem;
   cursor:auto;
+}
+
+.sectionTitle {
+  margin-top: 0;
 }
 
 .menuItem {
@@ -316,30 +322,26 @@ span {
   font-size: 18px;
 }
 
+
 /*-----PostCard------*/
 .post-card {
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  align-content: center;
   background-color: var(--CoPrimaryColor);
   color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 20px;
-  margin: 20px 0;
-  width: 100%;
-  max-width: 600px; 
+  width: 80%;
+  max-width: 800px;
+  margin: 40px auto 20px auto;
 }
 
-.post-header {
+.header {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.post-header .username {
+.header .username {
   margin-left: 10px;
   font-weight: bold;
 }
@@ -348,12 +350,14 @@ span {
   margin-bottom: 15px;
 }
 
-.post-actions {
+.actions {
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: white;
 }
 
-.post-actions button {
+.action-button {
   display: flex;
   align-items: center;
   margin-right: 15px;
@@ -363,21 +367,90 @@ span {
   border-radius: 5px;
   padding: 8px;
   cursor: pointer;
+  width: 100px;
 }
 
-.post-actions button:hover {
+.action-button:hover {
   background-color: var(--secondaryColor);
 }
 
-.post-actions button .MuiSvgIcon-root {
+.action-button .MuiSvgIcon-root {
   margin-right: 5px;
+}
+
+.action-count {
+  margin-left: 5px;
+  color: white;
+}
+
+.icon {
+  color: white;
+}
+
+.icon.action-active {
+  color: #195b56;
+}
+.action-count.action-active {
+  color: #195b56;
+}
+
+.action-btn {
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+
+/*------comments-------*/
+.comment-section ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.comment {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.comment-actions {
+  margin-top: 10px;
+}
+
+/*--------replies--------*/
+.replies {
+  margin-left: 20px;
+}
+
+.reply {
+  margin-bottom: 10px;
+}
+
+.reply-actions {
+ margin-right: 30px; 
+}
+
+.reply-button.action-active {
+  color: #195b56;
 }
 
 
 
+.reply-header {
+  margin-top: 20px;
+}
 
 
+/*----------create-post---------*/
+.create-post {
+  width: 100%;
+  margin-top: 20px;
+}
 
+.create-post input {
+  display: flex;
+}
 
 
 @media (max-width: 1100px) {
@@ -388,6 +461,7 @@ span {
 }
 
 @media (max-width: 920px) {
+
   .navright {
     margin-right: 10%;
   }
@@ -406,6 +480,11 @@ span {
 
   .leftBar {
     display: none;
+  }
+
+  .post-card {
+    max-width: 80%;
+    
   }
 
 }

@@ -7,8 +7,8 @@ function UserDropDown() {
         <div className='userInfo'>
             <img src='src/assets/userImg.webp' alt="user" className='profileImage' />
             <div className='profileInfo'>
-            <div className='profileName'>John Doe</div>
-            <div className='profileEmail'>john.doe@example.com</div>
+                <div className='profileName'>John Doe</div>
+                <div className='profileEmail'>john.doe@example.com</div>
             </div>
         </div>
         <div className='separatorLine'></div>

@@ -22,90 +22,53 @@ import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';
 
 function App() {
-
   const [currentUser, setCurrentUser] = useState(true);
-  const ProtectedRoutes = ({children}) => {
-    if(!currentUser)
-      return <Navigate to="/login"/>;
+
+  const ProtectedRoutes = ({ children }) => {
+    if (!currentUser) return <Navigate to="/login" />;
 
     return children;
-  } 
+  };
 
-  const router = createBrowserRouter([  
-      {
-        path: "/",
-        element:<ProtectedRoutes><Layout/></ProtectedRoutes>,
-        children: [
-          { path: "/", element: <Home /> },
-          { path: "/profile", element: <Profile /> },
-          { path: "/studio", element: <Studio /> },
-          { path: "/stream", element: <Stream /> },
-        ],
-      },
-
+  const router = createBrowserRouter([
     {
-      path: "/login",
-      element: <Login/>,
+      path: '/',
+      element: (
+        <ProtectedRoutes>
+          <Layout />
+        </ProtectedRoutes>
+      ),
+      children: [
+        { path: '/', element: <Home /> },
+        { path: '/profile', element: <Profile /> },
+        { path: '/studio', element: <Studio /> },
+        { path: '/stream', element: <Stream /> },
+      ],
     },
-    {
-      path: "/register",
-      element: <Register/>,
-    },
-    {
-      path: "/profile",
-      element: <Profile/>,
-    },
-    {
-      path:"/studio",
-      element: <Studio/>,
-    }, 
-    {
-      path:"/stream",
-      element: <Stream/>,
-    }, 
+    // ... (rest of your routes)
   ]);
 
   function Layout() {
-    const navigate = useNavigate();
-    const { page } = useParams();
-    const renderContent = () => {
-      console.log("page", page)
-      switch (page) {
-        case '':
-          return <Home />;
-        case 'profile':
-          return <Profile />;
-        default:
-          //return <Navigate to="/login"/>;
-          return null;
-      }
-    };
-
-
     return (
       <>
-        <MyNavBar/>
-        <div style={{ display: "flex" }}>
+        <MyNavBar />
+        <div style={{ display: 'flex' }}>
           <div>
             <LeftBar />
           </div>
-          <div>
-            {renderContent()}
+          <div style={{ flex: 1, marginTop: '130px' }}>
+            <Outlet />
           </div>
-          <div style={{ marginLeft: "auto" }}>
+          <div style={{ marginLeft: 'auto' }}>
             <RightBar />
           </div>
         </div>
-        <Outlet/>
       </>
     );
-  } 
+  }
 
-  return (
-    <>
-      <RouterProvider router={router}/>
-    </>
-  )
+  return <RouterProvider router={router} />;
 }
+
 
 export default App
