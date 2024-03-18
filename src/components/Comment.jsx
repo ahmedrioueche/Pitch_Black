@@ -7,6 +7,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import Reply from './Reply'
 import NewPost from './NewPost';
+import NewComment from './NewComment';
 
 const Comment = ({currentUser, username, profilePicUrl, content, likes, replies }) => {
     const [liked, setLiked] = useState(false);
@@ -22,11 +23,11 @@ const Comment = ({currentUser, username, profilePicUrl, content, likes, replies 
   return (
     <div className="comment">
      <div className="header">
-        <Avatar alt={username} src={profilePicUrl} />
+        <Avatar className="avatar" alt={username} src={profilePicUrl} />
         <span className="username">{username}</span>
       </div>
       <div className="comment-content">{content}</div>
-        <div className="actions">
+        <div className="actions comment-actions">
         <IconButton 
           onClick={handleLiked}
           className = 'action-button'>
@@ -43,7 +44,7 @@ const Comment = ({currentUser, username, profilePicUrl, content, likes, replies 
       <div className='replies'>
         {commentsOpened && (
           <>
-           <NewPost currentUser={currentUser}/>
+           <NewComment currentUser={currentUser} />
            <div>
             {replies.map((reply, index) => (
                 <Reply key={index} {...reply} currentUser={currentUser} />

@@ -15,7 +15,7 @@ function NotificationsDropDown() {
   };
 
   return (
-    <div className='notificationsDropdownMenu' >
+    <div className='dropdownMenu' >
       <div className='userInfo'>
         <img src={profilePicUrl} alt="user" className='profileImage' />
         <div className='profileInfo'>

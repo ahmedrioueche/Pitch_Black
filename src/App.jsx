@@ -22,7 +22,10 @@ import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(true);
+  const [currentUser, setCurrentUser] = useState({
+    username: 'JohnDoe',
+    profilePicUrl: 'src/assets/userImg.webp',
+  });
 
   const ProtectedRoutes = ({ children }) => {
     if (!currentUser) return <Navigate to="/login" />;
@@ -40,12 +43,11 @@ function App() {
       ),
       children: [
         { path: '/', element: <Home /> },
-        { path: '/profile', element: <Profile /> },
+        { path: '/profile', element: <Profile currentUser={currentUser} /> },
         { path: '/studio', element: <Studio /> },
         { path: '/stream', element: <Stream /> },
       ],
     },
-    // ... (rest of your routes)
   ]);
 
   function Layout() {
@@ -54,14 +56,12 @@ function App() {
         <MyNavBar />
         <div style={{ display: 'flex' }}>
           <div>
-            <LeftBar />
+            <LeftBar user={currentUser} />
           </div>
           <div style={{ flex: 1, marginTop: '130px' }}>
             <Outlet />
           </div>
-          <div style={{ marginLeft: 'auto' }}>
-            <RightBar />
-          </div>
+         
         </div>
       </>
     );

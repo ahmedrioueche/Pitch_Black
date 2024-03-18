@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Comment from './Comment'; 
-import NewPost from './NewPost'
+import NewPost from './NewPost';
+import NewComment from './NewComment';
+
 const CommentSection = ({ currentUser, comments }) => {
   return (
     <div className="comment-section">
-      <div className='separatorLine'></div>
-      <div className='sectionTitle'>Comments</div>
-      <div className='separatorLine'></div>
-      <NewPost currentUser={currentUser} />
+      <NewComment currentUser={currentUser} />
       <ul>
         {comments.map((comment, index) => (
           <>
-            <div className='separatorLine'></div>
             <li key={index}>
               <Comment
                 currentUser={currentUser}

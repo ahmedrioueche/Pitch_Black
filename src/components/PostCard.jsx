@@ -7,6 +7,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import ShareIcon from '@mui/icons-material/Share';
 import CommentSection from './CommentSection';
+import { Link } from 'react-router-dom';
 
 const PostCard = ({ currentUser, username, profilePicUrl, content, likes, comments, shares }) => {
 
@@ -17,12 +18,17 @@ const PostCard = ({ currentUser, username, profilePicUrl, content, likes, commen
     const handleLiked = () => {
         setLiked(!liked);
     };
-    const handlecommentsOpened = () => {
+    const handlecommentsOpen = () => {
         setcommentsOpened(!commentsOpened);
     };
-    const handleshareClicked = () => {
+    const handleshareClick = () => {
         setshareClicked(!shareClicked);
     };
+
+    const handleUsernameClick = (username) => {
+      //go to user profile
+      <Navigate to="/profile" />
+    }
 
     const placeholderReplies = [
       {
@@ -43,10 +49,10 @@ const PostCard = ({ currentUser, username, profilePicUrl, content, likes, commen
 
   return (
     <div className="post-card">
-      <div className="header">
-        <Avatar alt={username} src={profilePicUrl} />
-        <span className="username">{username}</span>
-      </div>
+      <Link to="/profile" className="header postHeader">
+        <Avatar className="avatar" alt={currentUser.username} src={currentUser.profilePicUrl} />
+        <span className="username">{currentUser.username}</span>
+      </Link>
       <div className="post-content">{content}</div>
       <div className="actions">
         <IconButton 
@@ -56,14 +62,14 @@ const PostCard = ({ currentUser, username, profilePicUrl, content, likes, commen
           <span className={`action-count ${liked ? 'action-active' : ''}`}>{likes}</span>
         </IconButton>
         <IconButton 
-          onClick={handlecommentsOpened}
+          onClick={handlecommentsOpen}
           className="action-button">
           <CommentIcon className={`icon ${commentsOpened ? 'action-active' : ''}`}  />
           <span className={`action-count ${commentsOpened ? 'action-active' : ''}`}>{comments}</span>
         </IconButton>
         <IconButton 
           className="action-button"
-          onClick={handleshareClicked}>
+          onClick={handleshareClick}>
           <ShareIcon className={`icon ${shareClicked ? 'action-active' : ''}`} />
           <span className={`action-count ${shareClicked ? 'action-active' : ''}`}>{shares}</span>
         </IconButton>

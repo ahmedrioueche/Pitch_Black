@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import NewPost from './NewPost';
+import NewComment from './NewComment';
 
 const Reply = ({currentUser, username, profilePicUrl, content, likes }) => {
   const [liked, setLiked] = useState(false);
@@ -22,9 +23,8 @@ const Reply = ({currentUser, username, profilePicUrl, content, likes }) => {
 
   return (
     <div className="reply">
-      <div className='separatorLine'></div>
       <div className="header reply-header">
-        <Avatar alt={username} src={profilePicUrl} />
+        <Avatar className="avatar" alt={username} src={profilePicUrl} />
         <span className="username">{username}</span>
       </div>
       <div className="reply-content">{content}</div>
@@ -40,7 +40,7 @@ const Reply = ({currentUser, username, profilePicUrl, content, likes }) => {
       </div>
       {replyOpened && (
         <>
-          <NewPost currentUser={currentUser}/>
+          <NewComment currentUser={currentUser}/>
         </>
       )}
     </div>

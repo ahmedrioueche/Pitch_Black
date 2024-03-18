@@ -10,7 +10,7 @@ function MessagesDropDown() {
   ];
 
   return (
-    <div className='messagesDropdownMenu'>
+    <div className='dropdownMenu'>
       <div className='userInfo'>
         <img src={profilePicUrl} alt="user" className='profileImage' />
         <div className='profileInfo'>

@@ -21,6 +21,8 @@ import UserDropDown from './UserDropDown';
 import Messages from './MessagesDropDown';
 import MessagesDropDown from './MessagesDropDown';
 import NotificationsDropDown from './NotifsDropDown'
+
+
 function MyNavBar() {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -178,7 +180,7 @@ function MyNavBar() {
                 <ArrowBackSharpIcon className='leftIcon' onClick={toggleSearchBar}/>
                 <form>
                   <SearchIcon className="searchIcon" />
-                  <input type="text" placeholder='Search' />
+                  <input className="search-box" type="text" placeholder='Search' />
                   <button className='btn'>Search</button>
                 </form>
               </> 
@@ -186,7 +188,7 @@ function MyNavBar() {
               <>
                 <form> 
                   <SearchIcon className="searchIcon" />
-                  <input type="text" placeholder='Search' />
+                  <input className="search-box" type="text" placeholder='Search' />
                   <button className='btn'>Search</button>
                 </form>
               </>

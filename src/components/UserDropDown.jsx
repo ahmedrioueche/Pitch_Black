@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function UserDropDown() {
-     
   return (
-    <div className='userDropdownMenu'>
+    <div className='dropdownMenu'>
         <div className='userInfo'>
             <img src='src/assets/userImg.webp' alt="user" className='profileImage' />
             <div className='profileInfo'>
@@ -12,21 +12,19 @@ function UserDropDown() {
             </div>
         </div>
         <div className='separatorLine'></div>
-        <div className='menuItem'>Your Profile</div>
-        <div className='menuItem'>Your Projects</div>
-        <div className='menuItem'>Your Gallery</div>
+        <Link to='/profile' className='menuItem'>Your Profile</Link>
+        <Link to='/' className='menuItem'>Your Projects</Link>
+        <Link to='/' className='menuItem'>Your Gallery</Link>
         <div className='separatorLine'></div>
-        <div className='menuItem'>Pitch Studio</div>
-        <div className='menuItem'>Pitch Stream</div>
-        <div className='menuItem'>Pitch Library</div>
+        <Link to='/studio' className='menuItem'>Pitch Studio</Link>
+        <Link to='/stream' className='menuItem'>Pitch Stream</Link>
+        <Link to='/' className='menuItem'>Pitch Library</Link>
         <div className='separatorLine'></div>
-        <div className='menuItem'>Settings</div>
+        <Link to='/' className='menuItem'>Settings</Link>
         <div className='separatorLine'></div>
-        <div className='menuItem'>Log out</div>
-    </div>  )
-
-
-
+        <Link to='/login' className='menuItem'>Log out</Link>
+    </div>
+  );
 }
 
-export default UserDropDown
+export default UserDropDown;
