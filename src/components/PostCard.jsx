@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
@@ -8,12 +8,14 @@ import CommentIcon from '@mui/icons-material/Comment';
 import ShareIcon from '@mui/icons-material/Share';
 import CommentSection from './CommentSection';
 import { Link } from 'react-router-dom';
+import ShareWindow from './ShareWindow';
 
-const PostCard = ({ currentUser, username, profilePicUrl, content, likes, comments, shares }) => {
+const PostCard = ({currentUser, post}) => {
 
     const [liked, setLiked] = useState(false);
     const [commentsOpened, setcommentsOpened] = useState(false);
-    const [shareClicked, setshareClicked] = useState(false);
+    const [shareWindowOpened, setshareWindowOpened] = useState(false);
+    const shareWindowRef = useRef(null);
 
     const handleLiked = () => {
         setLiked(!liked);
@@ -22,13 +24,12 @@ const PostCard = ({ currentUser, username, profilePicUrl, content, likes, commen
         setcommentsOpened(!commentsOpened);
     };
     const handleshareClick = () => {
-        setshareClicked(!shareClicked);
+      setshareWindowOpened(!shareWindowOpened);
     };
-
-    const handleUsernameClick = (username) => {
-      //go to user profile
-      <Navigate to="/profile" />
-    }
+    const handleShareWindowClose = () => {
+      setshareWindowOpened(false);
+      console.log("close")
+    };
 
     const placeholderReplies = [
       {
@@ -45,33 +46,32 @@ const PostCard = ({ currentUser, username, profilePicUrl, content, likes, commen
       },
 
     ];
-
-
+    
   return (
     <div className="post-card">
       <Link to="/profile" className="header postHeader">
-        <Avatar className="avatar" alt={currentUser.username} src={currentUser.profilePicUrl} />
-        <span className="username">{currentUser.username}</span>
+        <Avatar className="avatar" alt={post.username} src={post.profilePicUrl} />
+        <span className="username">{post.username}</span>
       </Link>
-      <div className="post-content">{content}</div>
+      <div className="post-content">{post.content}</div>
       <div className="actions">
         <IconButton 
           onClick={handleLiked}
           className = 'action-button'>
           <ThumbUpIcon className={`icon ${liked ? 'action-active' : ''}`} />
-          <span className={`action-count ${liked ? 'action-active' : ''}`}>{likes}</span>
+          <span className={`action-count ${liked ? 'action-active' : ''}`}>{post.likes}</span>
         </IconButton>
         <IconButton 
           onClick={handlecommentsOpen}
           className="action-button">
           <CommentIcon className={`icon ${commentsOpened ? 'action-active' : ''}`}  />
-          <span className={`action-count ${commentsOpened ? 'action-active' : ''}`}>{comments}</span>
+          <span className={`action-count ${commentsOpened ? 'action-active' : ''}`}>{post.comments}</span>
         </IconButton>
         <IconButton 
           className="action-button"
           onClick={handleshareClick}>
-          <ShareIcon className={`icon ${shareClicked ? 'action-active' : ''}`} />
-          <span className={`action-count ${shareClicked ? 'action-active' : ''}`}>{shares}</span>
+          <ShareIcon className={`icon ${shareWindowOpened ? 'action-active' : ''}`} />
+          <span className={`action-count ${shareWindowOpened ? 'action-active' : ''}`}>{post.shares}</span>
         </IconButton>
       </div>
       {commentsOpened && (
@@ -97,17 +97,16 @@ const PostCard = ({ currentUser, username, profilePicUrl, content, likes, commen
            />
         </>
       )}
+      {shareWindowOpened && (
+        <>
+         <ShareWindow 
+         currentUser={currentUser} 
+         post={post} 
+         onClose={handleShareWindowClose}/>
+        </>
+      )}
     </div>
   );
-};
-
-PostCard.propTypes = {
-  username: PropTypes.string.isRequired,
-  profilePicUrl: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  likes: PropTypes.number.isRequired,
-  comments: PropTypes.number.isRequired,
-  shares: PropTypes.number.isRequired,
 };
 
 export default PostCard;

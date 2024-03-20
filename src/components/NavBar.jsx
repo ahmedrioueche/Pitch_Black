@@ -200,8 +200,12 @@ function MyNavBar() {
         {(!isSearchBarToggled && window.innerWidth >= 650) ? (
           <>
             <SearchIcon className='rightIcon searchIcon' onClick={toggleSearchBar} />
-            <PlayCircleIcon className='rightIcon'/>
-            <AddCircleOutlineSharpIcon className='rightIcon' />
+            <Link to="/stream">
+              <PlayCircleIcon className='rightIcon link'/>
+            </Link>
+            <Link to="/">
+             <AddCircleOutlineSharpIcon className='rightIcon link' />
+            </Link>
             <CircleNotificationsIcon className="rightIcon" ref={notifsDropDownRef} onClick={toggleNotifsDropDown} />
                {isNotifsDropDownVisibles && (
                 <NotificationsDropDown/>
@@ -257,7 +261,7 @@ function MyNavBar() {
                 </div>
               )}
               {isUserDropdownVisible && (
-                  <UserDropDown />
+                <UserDropDown />
               )}
               {isMessagesDropDownVisible && (
                 <MessagesDropDown/>

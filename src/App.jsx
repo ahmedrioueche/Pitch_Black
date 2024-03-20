@@ -20,7 +20,7 @@ import Studio from './pages/studio/Studio'
 import Stream from './pages/stream/Stream'
 import LeftBar from './components/LeftBar';
 import RightBar from './components/RightBar';
-
+import StreamPage from './pages/stream/StreamPage'
 function App() {
   const [currentUser, setCurrentUser] = useState({
     username: 'JohnDoe',
@@ -46,6 +46,7 @@ function App() {
         { path: '/profile', element: <Profile currentUser={currentUser} /> },
         { path: '/studio', element: <Studio /> },
         { path: '/stream', element: <Stream /> },
+        {path: '/stream/:id', element: <StreamPage/>}
       ],
     },
   ]);

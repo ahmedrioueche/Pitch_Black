@@ -12,12 +12,37 @@ const Profile = ({ currentUser }) => {
     console.log("postsSelected", postsSelected)
   }
 
+  const user = {
+      username: "JohnDoe",
+      profilePicUrl: "src/assets/userImg.webp",
+    };
+
+  const posts = [
+    {
+      username: "JohnDoe",
+      profilePicUrl: "src/assets/userImg.webp",
+      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed libero in tellus hendrerit aliquam. Nulla facilisi. Quisque in arcu id metus tristique tincidunt. Sed auctor odio id mi bibendum, ac eleifend libero laoreet. Nullam nec lectus ut mauris tempor hendrerit. Sed vel sapien ac sapien pellentesque volutpat. Vivamus eu arcu vel tellus laoreet tristique ac vel velit. Integer efficitur tincidunt ligula vel consequat. Curabitur ut justo vel libero blandit fermentum id at augue. In in hendrerit libero, eget volutpat odio.",
+      likes: 42,
+      comments: 15,
+      shares: 8,
+    },
+
+    {
+      username: "JohnDoe",
+      profilePicUrl: "src/assets/userImg.webp",
+      content: "This is a sample post content.",
+      likes: 12,
+      comments: 9,
+      shares: 2,
+    }
+  ];
+
   return (
     <div className="profile">
       <div className="profile-content">
         <div className="profile-header">
-        <img className="userImg" alt={currentUser.username} src={currentUser.profilePicUrl} />
-        <span className="username">{currentUser.username}</span>
+        <img className="userImg" alt={user.username} src={user.profilePicUrl} />
+        <span className="username">{user.username}</span>
       </div>
       <div className="profile-body">
         <div className="profile-link" onClick={handlePostClick}>Posts</div>     
@@ -27,33 +52,13 @@ const Profile = ({ currentUser }) => {
       </div>
       {postsSelected && (
           <>
-             <PostCard
-                currentUser={currentUser}
-                username="JohnDoe"
-                profilePicUrl="src/assets/userImg.webp"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed libero in tellus hendrerit aliquam. Nulla facilisi. Quisque in arcu id metus tristique tincidunt. Sed auctor odio id mi bibendum, ac eleifend libero laoreet. Nullam nec lectus ut mauris tempor hendrerit. Sed vel sapien ac sapien pellentesque volutpat. Vivamus eu arcu vel tellus laoreet tristique ac vel velit. Integer efficitur tincidunt ligula vel consequat. Curabitur ut justo vel libero blandit fermentum id at augue. In in hendrerit libero, eget volutpat odio."
-                likes={42}
-                comments={15}
-                shares={8}
-              />
-              <PostCard
-                currentUser={currentUser}
-                username="JohnDoe"
-                profilePicUrl="src/assets/userImg.webp"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed libero in tellus hendrerit aliquam. Nulla facilisi. Quisque in arcu id metus tristique tincidunt. Sed auctor odio id mi bibendum, ac eleifend libero laoreet. Nullam nec lectus ut mauris tempor hendrerit. Sed vel sapien ac sapien pellentesque volutpat. Vivamus eu arcu vel tellus laoreet tristique ac vel velit. Integer efficitur tincidunt ligula vel consequat. Curabitur ut justo vel libero blandit fermentum id at augue. In in hendrerit libero, eget volutpat odio."
-                likes={26}
-                comments={16}
-                shares={7}
-              />
-               <PostCard
-                currentUser={currentUser}
-                username="JohnDoe"
-                profilePicUrl='src/assets/userImg.webp'
-                content="This is a sample post content."
-                likes={12}
-                comments={9}
-                shares={2}
-              />
+            {posts.map((post, index) => (
+            <PostCard
+              key={index}
+              currentUser={currentUser}
+              post={post}
+          />
+        ))}
           </>
       )}
       </div>

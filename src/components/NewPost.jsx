@@ -20,6 +20,7 @@ function NewPost({ currentUser }) {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+  
 
   return (
     <div className='new new-post'>

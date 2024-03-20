@@ -5,6 +5,7 @@ const VideoContainer = () => {
     const videos = [
       {
         id: 1,
+        title: 'The Air Marchal, Liam Neeson',
         thumbnailUrl: 'src/assets/thumb1.jpg',
         username: 'John Doe',
         profilePicUrl: 'src/assets/userImg.webp',
@@ -13,6 +14,7 @@ const VideoContainer = () => {
       },
       {
         id: 2,
+        title: 'kung-fu Panda 4',
         thumbnailUrl: 'src/assets/thumb2.jpg',
         username: 'Pussy',
         profilePicUrl: 'src/assets/cat.webp',
@@ -21,6 +23,7 @@ const VideoContainer = () => {
       },
       {
         id: 3,
+        title: 'Apocalypse',
         thumbnailUrl: 'src/assets/thumb3.jpg',
         username: 'Pussy',
         profilePicUrl: 'src/assets/cat.webp',
@@ -29,6 +32,7 @@ const VideoContainer = () => {
       },
       {
         id: 4,
+        title: 'The hacker',
         thumbnailUrl: 'src/assets/thumb4.jpg',
         username: 'John Doe',
         profilePicUrl: 'src/assets/userImg.webp',
@@ -37,6 +41,7 @@ const VideoContainer = () => {
       },
       {
         id: 5,
+        title: 'Killer of the flower moon',
         thumbnailUrl: 'src/assets/thumb8.webp',
         username: 'Pussy',
         profilePicUrl: 'src/assets/cat.webp',
@@ -45,6 +50,7 @@ const VideoContainer = () => {
       },
       {
         id: 6,
+        title: 'Fautline - full movie',
         thumbnailUrl: 'src/assets/thumb6.jpg',
         username: 'Doggo',
         profilePicUrl: 'src/assets/dog.jpg',
