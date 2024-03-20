@@ -1,29 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Avatar from '@mui/material/Avatar';
 import PeopleIcon from '@mui/icons-material/People';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 
-function LeftBar() {
+function LeftBar({ user }) {
   return (
     <div className='leftBar'>
       <div className='container'>
         <div className='menu'>
-          <div className='item'>
-            <AccountCircleIcon className='icon' />
-            <span>UserName</span>
-          </div>
-          <div className='item'>
-            <PeopleIcon className='icon' />
+          <Link to="/profile" className='menuItem profile-menuItem'>
+            <Avatar className='avatar leftbar-avatar' src={user.profilePicUrl}/>
+            <span>{user.username}</span>
+          </Link>
+          <Link className='menuItem profile-menuItem'>
+            <VideoLibraryIcon className='icon' />
+            <span>Projects</span>
+          </Link>
+          <Link to="/" className='menuItem profile-menuItem'>
+            <PeopleIcon className='icon'/>
             <span>Friends</span>
-          </div>
-          <div className='item'>
+          </Link>
+          <Link to="/" className='menuItem profile-menuItem'>
             <PeopleIcon className='icon' />
             <span>Co-creators</span>
-          </div>
-          <div className='item'>
-            <VideoLibraryIcon className='icon' />
-            <span>Gallery</span>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
