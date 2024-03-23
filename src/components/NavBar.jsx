@@ -166,7 +166,7 @@ function MyNavBar() {
   return (
     <>
       <div className='navbar'>
-      {(window.innerWidth >= 500 || !isSearchBarVisible) && (
+      {(window.innerWidth >= 650 || !isSearchBarVisible) && (
         <div className='navleft'>
           <Link to="/">
             <span>Pitch Black</span>

@@ -1,5 +1,5 @@
 import React from 'react';
-import VideoThumbnail from './VideoThumbnail';
+import Suggestion from './Suggestion';
 import thumb1 from '../../assets/thumb1.jpg';
 import thumb2 from '../../assets/thumb2.jpg';
 import thumb3 from '../../assets/thumb3.jpg';
@@ -10,7 +10,7 @@ import userImg from '../../assets/userImg.webp';
 import dog from '../../assets/dog.jpg';
 import pussy from '../../assets/cat.webp';
 
-const VideoContainer = () => {
+const VideoSuggestions = () => {
   const videos = [
     {
       id: 1,
@@ -67,15 +67,16 @@ const VideoContainer = () => {
       views: "567K"
     },
   ];
+
   return (
-    <div className="video-container">
-      {videos.map((video) => (
-        <div key={video.id} className="video-item">
-          <VideoThumbnail video={video} />
+    <div className="video-suggestions">
+      {videos.map((video, index) => (
+        <div key={index} className="video-suggestion">
+         <Suggestion video={video}/>
         </div>
       ))}
     </div>
   );
 };
 
-export default VideoContainer;
+export default VideoSuggestions;
