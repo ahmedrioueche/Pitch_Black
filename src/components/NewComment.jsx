@@ -13,8 +13,12 @@ function NewComment({ currentUser }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your submit logic here
   };
+  
+  const [inputFocused, setInputFocused] = useState();
+  const handleFocus = () => {
+    setInputFocused(true);
+  }
 
   return (
     <div className='new new-comment'>
@@ -26,14 +30,16 @@ function NewComment({ currentUser }) {
         <div className="input-container">
           <textarea
             value={inputValue}
-            onChange={handleInputChange}
+            className={`input-box ${inputFocused ? 'focused' : ''}`}
             placeholder="What do you think?"
-            className="input-box"
-            autoFocus
+            onChange={handleInputChange}
+            onFocus={handleFocus} 
           />
-          <IconButton className='iconBtn' type="submit" aria-label="send">
-            <SendIcon className='icon sendIcon' />
-          </IconButton>
+          {inputFocused && (
+            <IconButton className='iconBtn' type="submit" aria-label="send">
+              <SendIcon className='icon sendIcon' />
+            </IconButton>
+          )}
         </div>
       </form>
     </div>

@@ -37,12 +37,14 @@ const PostCard = ({currentUser, post}) => {
         profilePicUrl: "src/assets/userImg.webp",
         content: ' Quisque in arcu id metus tristique tincidunt. Sed auctor odio id mi bibendum, ac eleifend libero laoreet.',
         likes: 4,
+        date: "2024-03-25T00:00:00", 
       },
       {
         username: 'JeenDoe',
         profilePicUrl: "src/assets/userImg.webp",
         content: 'Nullam nec lectus ut mauris tempor hendrerit. Sed vel sapien ac sapien pellentesque volutpat.',
         likes: 3,
+        date: "2024-03-24T00:00:00", 
       },
 
     ];
@@ -84,6 +86,7 @@ const PostCard = ({currentUser, post}) => {
                   profilePicUrl: 'src/assets/cat.webp',
                   content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed libero in tellus hendrerit aliquam. Nulla facilisi. Quisque in arcu id metus tristique tincidunt. Sed auctor odio id mi bibendum, ac eleifend libero laoreet. Nullam nec lectus ut mauris tempor hendrerit. Sed vel sapien ac sapien pellentesque volutpat.',
                   likes: '27',
+                  date: "2024-03-24T00:00:00", 
                   replies: placeholderReplies  ,
                   },
                   {
@@ -91,6 +94,7 @@ const PostCard = ({currentUser, post}) => {
                   profilePicUrl: 'src/assets/dog.jpg',
                   content: 'Sed auctor odio id mi bibendum, ac eleifend libero laoreet. Nullam nec lectus ut mauris tempor hendrerit. Sed vel sapien ac sapien pellentesque volutpat. Vivamus eu arcu vel tellus laoreet',
                   likes: '17',
+                  date: "2024-03-25T00:00:00", 
                   replies: placeholderReplies  ,
                   },
               ]}

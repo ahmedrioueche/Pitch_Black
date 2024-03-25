@@ -171,6 +171,7 @@ body {
 
 .navright .collapseIcon {
   display: none;
+  margin-top: -7px;
 }
 
 .navright .searchIcon {
@@ -345,6 +346,7 @@ body {
 
 .icon {
   font-size: 24px;
+  margin: 0;
   margin-right: 20px;
 }
 
@@ -433,7 +435,8 @@ span {
 
 .header .username {
   margin-left: 10px;
-  font-weight: bold;
+  font-weight: lighter;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
@@ -444,6 +447,7 @@ span {
 
 .post-content {
   margin-bottom: 15px;
+  font-size: 1rem;
 }
 
 .actions {
@@ -509,11 +513,17 @@ span {
 .comment {
   margin-top: 20px;
   margin-bottom: 20px;
+  font-size: 1rem;
+  color: white;
 }
 
-.comment-actions {
-  
+.comment-date {
+  color: gray;
+  font-size: 1rem;
+  margin-left: 15px;
+  margin-top: 12px;
 }
+
 
 /*--------replies--------*/
 .replies {
@@ -638,7 +648,6 @@ textarea:focus {
   display: flex;
   flex-direction: column; 
   padding: 10px;
-
 }
 
 .input-box {
@@ -650,14 +659,18 @@ textarea:focus {
   background-color: var(--primaryColor);
   overflow: hidden;
   resize: none;
+  transition: box-shadow 0.3s ease-in-out; 
+  box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.2); 
+}
+
+.new-comment
+.input-box:focus {
+  outline: none; 
+  box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.5);  
+  outline: none;
 }
 
 .input-box:focus {
-  outline: none;
-  border-color: var(--secondaryColor);
-}
-
-.sendIcon {
 }
 
 .sendIcon:active, 
@@ -672,6 +685,15 @@ textarea:focus {
   align-items: center;
   justify-items: center;
   align-content: center;
+}
+
+.new-comment {
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+.sendIcon {
+  margin: 0;
 }
 
 /*------new post--------*/
@@ -769,8 +791,42 @@ textarea:focus {
   color: var(--secondaryColor);
 }
 
+/*------DescriptionBox--------- */
+.description-box {
+  background-color: var(--primaryColor);
+  border-radius: 5px;
+  padding: 20px;
+  height: 150px; 
+  overflow: hidden; 
+  margin-top: 0;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+}
 
+.description-box.expanded {
+  height: auto; 
+}
 
+.description-box-header {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.description-box h5 {
+  color: white;
+}
+
+.description-box p {
+  color: white;
+  margin-bottom: 0;
+}
+
+.description-box
+.show-icon {
+  margin-left: 20px;
+  cursor: pointer;
+}
 
 
 /*-------------------------*/

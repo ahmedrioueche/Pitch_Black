@@ -18,6 +18,7 @@ const CommentSection = ({ currentUser, comments }) => {
                 profilePicUrl={comment.profilePicUrl}
                 content={comment.content}
                 likes={comment.likes}
+                date={comment.date}
                 replies={comment.replies}
               />
             </li>

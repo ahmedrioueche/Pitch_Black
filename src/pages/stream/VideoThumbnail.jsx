@@ -13,12 +13,16 @@
           <Avatar className="stream avatar" alt={video.username} src={video.profilePicUrl} />
         </Link>
         <div className='video-meta-data'>
-          <div className='video-title'>{video.title}</div>
-          <span className="stream username">{video.username}</span>
+          <Link to={`/stream/${video.id}`} className='title-link'>
+            <div className='video-title'>{video.title}</div>
+          </Link>
+          <Link to={`/profile/${video.username}`}  className='username-link'>
+            <span className="stream username">{video.username}</span>
+          </Link>
           <div className='video-info'>
             <div className='views'>{video.views} views -</div>
             <div className="video-date">{video.date}</div>
-        </div>
+         </div>
         </div>
       </div>
     </div>

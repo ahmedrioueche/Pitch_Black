@@ -1,5 +1,5 @@
-// Reply.js
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
@@ -8,7 +8,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import NewPost from './NewPost';
 import NewComment from './NewComment';
 
-const Reply = ({currentUser, username, profilePicUrl, content, likes }) => {
+const Reply = ({currentUser, username, profilePicUrl, content, likes, date }) => {
   const [liked, setLiked] = useState(false);
   const [replyOpened, setreplyOpened] = useState(false);
 
@@ -20,12 +20,21 @@ const Reply = ({currentUser, username, profilePicUrl, content, likes }) => {
     setreplyOpened(!replyOpened);
     };
 
+    useEffect(()=>{
+      getRelativedate();
+    }, [])
 
+    const [relativeDate,setRelativeDate] = useState(null);
+    const getRelativedate = () => {
+        const uploadDate = new Date(date);
+        setRelativeDate(formatDistanceToNow(uploadDate, { addSuffix: true }));
+    }
   return (
     <div className="reply">
       <div className="header reply-header">
         <Avatar className="avatar" alt={username} src={profilePicUrl} />
         <span className="username">{username}</span>
+        <div className='comment-date'>{relativeDate}</div>
       </div>
       <div className="reply-content">{content}</div>
       <div className="actions">
@@ -33,8 +42,7 @@ const Reply = ({currentUser, username, profilePicUrl, content, likes }) => {
           <ThumbUpIcon className={`icon ${liked ? 'action-active' : ''}`} />
           <span className={`action-count ${liked ? 'action-active' : ''}`}>{likes}</span>
         </IconButton>
-        <IconButton 
-          className="action-button">
+        <IconButton className="action-button">
           <div className={`action-btn reply-btn ${liked ? 'action-active' : ''}`} onClick={handleReply}>Reply</div>
         </IconButton>
       </div>
